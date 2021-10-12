@@ -1,7 +1,7 @@
 [programs.localnet]
 h = "2nUgANsTWUnnd34Gn6S37aNk6b7gnuowsskZpZP95DLU"
 harmonia = "1wzRnd4GsUaznNivPyg6vn9tEz6QGdpwSudzP72v2Wk"
-candy_machine = "27Dzu1YWYfoEoLxxQeZMq1isFpAeaUqSXrChw8cVussB"
+candy_machine = "CANHaiDd6HPK3ykgunmXFNZMrZ4KbZgEidY5US2L8CTw"
 
 [registry]
 url = "https://anchor.projectserum.com"
@@ -12,4 +12,3 @@ wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "mocha --require ts-node/register ./tests/*.ts --timeout 300000"
-
