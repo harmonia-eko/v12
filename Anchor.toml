@@ -1,5 +1,8 @@
 [programs.localnet]
-h = "2nUgANsTWUnnd34Gn6S37aNk6b7gnuowsskZpZP95DLU"
+harmonia="HARm9wjX7iJ1eqQCckXdd1imRFXE6PsVChVdV4PbfLc"
+candy_machine = "CANHaiDd6HPK3ykgunmXFNZMrZ4KbZgEidY5US2L8CTw"
+
+[programs.devnet]
 harmonia="HARm9wjX7iJ1eqQCckXdd1imRFXE6PsVChVdV4PbfLc"
 candy_machine = "CANHaiDd6HPK3ykgunmXFNZMrZ4KbZgEidY5US2L8CTw"
 
@@ -7,7 +10,7 @@ candy_machine = "CANHaiDd6HPK3ykgunmXFNZMrZ4KbZgEidY5US2L8CTw"
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
