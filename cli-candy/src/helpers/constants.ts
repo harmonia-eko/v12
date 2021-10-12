@@ -18,7 +18,7 @@ export const TOKEN_PROGRAM_ID = new PublicKey(
 );
 // harmonia candy id
 export const CANDY_MACHINE_PROGRAM_ID = new PublicKey(
-  'CANHaiDd6HPK3ykgunmXFNZMrZ4KbZgEidY5US2L8CTw',
+  '27Dzu1YWYfoEoLxxQeZMq1isFpAeaUqSXrChw8cVussB',
 );
 export const CONFIG_ARRAY_START =
   32 + // authority
