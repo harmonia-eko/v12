@@ -539,13 +539,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "h"
-version = "0.1.0"
-dependencies = [
- "anchor-lang",
-]
-
-[[package]]
 name = "harmonia"
 version = "0.1.0"
 dependencies = [

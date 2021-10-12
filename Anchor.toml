@@ -11,7 +11,7 @@ url = "https://anchor.projectserum.com"
 
 [provider]
 cluster = "devnet"
-wallet = "~/.config/solana/id.json"
+wallet = "~/.config/solana/devnet.json"
 
 [scripts]
 test = "mocha --require ts-node/register ./tests/*.ts --timeout 300000"
