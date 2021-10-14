@@ -29,7 +29,12 @@ import { signMetadata } from './commands/sign';
 import { signAllMetadataFromCandyMachine } from './commands/signAll';
 
 program.version('0.0.2');
-
+function parseDate(date) {
+  if (date === 'now') {
+    return Date.now() / 1000;
+  }
+  return Date.parse(date) / 1000;
+}
 if (!fs.existsSync(CACHE_PATH)) {
   fs.mkdirSync(CACHE_PATH);
 }
