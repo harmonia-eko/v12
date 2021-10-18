@@ -91,15 +91,15 @@ export default defineComponent({
     async function buy() {
       const wallets = [getPhantomWallet()];
       initWallet({ wallets, autoConnect: true });
-      const { select } = useWallet();
+      const { wallet, select } = useWallet();
       select(WalletName.Phantom);
-      const theWallet = useWallet();
+     
       // console.log(theWallet.wallet);
 
       const dto: IBuyDto = {
         offsets: value.value,
-        buyerPk: theWallet,
-        wallet: theWallet,
+        buyerPk:  "",
+         wallet:null
 
       };
 

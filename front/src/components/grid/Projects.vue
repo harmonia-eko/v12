@@ -52,13 +52,10 @@ export default defineComponent({
     onBeforeMount(async () => {
       const { data } = await axios.get("projects");
       state.items = data;
-
       const wallets = [getPhantomWallet()];
       initWallet({ wallets, autoConnect: true });
       const { select } = useWallet();
       select(WalletName.Phantom);
-      
-
     })
 
     const perPage = computed(() => {
