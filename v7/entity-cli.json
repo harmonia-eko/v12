@@ -1,0 +1,7 @@
+{
+  "src": "entities",
+  "modulesDir": "server/src/modules",
+  "mode": "module",
+  "orm": "typeorm",
+  "lang": "ts"
+}
