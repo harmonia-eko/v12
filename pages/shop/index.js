@@ -1,15 +1,15 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import App from './App';
 
+import React from 'react'
 
-const Shop =()=> {
+export default function index() {
     return (
         <div>
-            <App/>
+            <App></App>
         </div>
     )
 }
-
-export default Shop
-
 
