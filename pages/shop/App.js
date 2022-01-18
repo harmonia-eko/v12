@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import { Navbar, Products, Cart, Checkout } from './components';
+import {useRouter} from 'Next/router'
+import { Navbar, Products, Cart, Checkout } from './shopComponents';
 import { commerce } from './lib/commerce';
 
 const App = () => {
@@ -71,25 +71,13 @@ const App = () => {
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
-  return (
-    <Router>
-      <div style={{ display: 'flex' }}>
-        <CssBaseline />
-        <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
-        <Switch>
-          <Route exact path="/">
-            <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
-          </Route>
-          <Route exact path="/cart">
-            <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
-          </Route>
-          <Route path="/checkout" exact>
-            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+switch (useRouter.pathname) {
+  case ('/shop'):return <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
+  case ('/cart'): return<Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
+  case ('/checkout'):    return    <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
+}
+
+  
 };
 
 export default App;
