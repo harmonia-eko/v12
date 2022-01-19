@@ -2,14 +2,14 @@ import React from "react";
 import '../css/style.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../public/icofont/icofont.min.css'
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {useRouter} from 'Next/router'
 import { Navbar, Products, Cart, Checkout } from '../shopComponents';
 import { commerce } from './lib/commerce';
 
-const App = () => {
+const App = (Component,pageProps) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
@@ -81,10 +81,7 @@ const App = () => {
   case ('/checkout'):    return    <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
 }
  */
-  
-};
 
-
-export default function App({ Component, pageProps }) {
   return <Component className="App" {...pageProps} />
 }
+export default App
