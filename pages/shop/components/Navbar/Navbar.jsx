@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
-import { Link, useLocation } from 'react-router-dom';
-
+import { Link } from 'next/link';
+import {useRouter} from 'next/router'
 import logo from '../../assets/commerce.png';
 import useStyles from './styles';
 
 const PrimarySearchAppBar = ({ totalItems }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const classes = useStyles();
-  const location = useLocation();
+  const location = useRouter().pathname;
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 

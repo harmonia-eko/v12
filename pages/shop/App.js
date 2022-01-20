@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { useHistory, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {useRouter} from 'next/router'
 import { Navbar, Products, Cart, Checkout } from './components';
 import { commerce } from './lib/commerce';
+import { ChildCareOutlined } from '@material-ui/icons';
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -11,7 +12,7 @@ const App = () => {
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
-
+const router=useRouter()
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
 
@@ -70,26 +71,36 @@ const App = () => {
   }, []);
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+ switch (router.pathname){
+  case ('/shop'):return<div style={{ display: 'flex' }}>
+  <CssBaseline />
+  <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
+ 
+    
+      <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
+    
+    
+</div>
+  case ('/cart'): return<div style={{ display: 'flex' }}>
+  <CssBaseline />
+  <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
+  
+    
+      <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
+    
+   
+</div>
+  case ('/checkout'):    return    <div style={{ display: 'flex' }}>
+  <CssBaseline />
+  <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
+  
+    
+      <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
+    
+  
+</div>
 
-  return (
-    <Router>
-      <div style={{ display: 'flex' }}>
-        <CssBaseline />
-        <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
-        <Switch>
-          <Route exact path="/">
-            <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
-          </Route>
-          <Route exact path="/cart">
-            <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
-          </Route>
-          <Route path="/checkout" exact>
-            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+ }
 };
 
 export default App;
