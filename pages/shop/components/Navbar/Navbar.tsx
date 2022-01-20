@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
-import { Link } from 'next/link';
+import Link  from 'next/link';
 import {useRouter} from 'next/router'
 import logo from '../../assets/commerce.png';
 import useStyles from './styles';
@@ -20,11 +20,11 @@ const PrimarySearchAppBar = ({ totalItems }) => {
   const renderMobileMenu = (
     <Menu anchorEl={mobileMoreAnchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} id={mobileMenuId} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMobileMenuOpen} onClose={handleMobileMenuClose}>
       <MenuItem>
-        <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
+        <Link href="/cart" aria-label="Show cart items" >
           <Badge badgeContent={totalItems} color="secondary">
             <ShoppingCart />
           </Badge>
-        </IconButton>
+        </Link>
         <p>Cart</p>
       </MenuItem>
     </Menu>
@@ -34,17 +34,17 @@ const PrimarySearchAppBar = ({ totalItems }) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-          <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
-            <img src={logo} alt="commerce.js" height="25px" className={classes.image} /> Commerce.js
-          </Typography>
+          <Link href="/"  >
+            {/* <img src={logo} alt="commerce.js" height="25px" className={classes.image} /> */} Commerce.js
+          </Link>
           <div className={classes.grow} />
-          {location.pathname === '/' && (
-          <div className={classes.button}>
-            <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
+          {location === '/' && (
+          <div className={classes.menuButton}>
+            <Link href="/cart" aria-label="Show cart items" >
               <Badge badgeContent={totalItems} color="secondary">
                 <ShoppingCart />
               </Badge>
-            </IconButton>
+            </Link>
           </div>
           )}
         </Toolbar>
