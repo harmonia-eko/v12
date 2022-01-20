@@ -21,3 +21,4 @@ registry(react.js)
 app
 whitepaper.md
 cli/node_modules
+.next
