@@ -77,32 +77,35 @@ const App = () => {
     fetchProducts();
     fetchCart();
   }, []);
-
+  const [route, setRoute] = useState("shop");
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
-  switch (router.pathname) {
-    case "/shop":
+  switch (route) {
+    case "shop":
       return (
         <div style={{ display: "flex" }}>
           <CssBaseline />
           <Navbar
             totalItems={cart.total_items}
             handleDrawerToggle={handleDrawerToggle}
+            setRoute
           />
 
           <Products
             products={products}
             onAddToCart={handleAddToCart}
             handleUpdateCartQty
+            setRoute
           />
         </div>
       );
-    case "/cart":
+    case "cart":
       return (
         <div style={{ display: "flex" }}>
           <CssBaseline />
           <Navbar
             totalItems={cart.total_items}
             handleDrawerToggle={handleDrawerToggle}
+            setRoute
           />
 
           <Cart
@@ -110,16 +113,18 @@ const App = () => {
             onUpdateCartQty={handleUpdateCartQty}
             onRemoveFromCart={handleRemoveFromCart}
             onEmptyCart={handleEmptyCart}
+            setRoute
           />
         </div>
       );
-    case "/checkout":
+    case "checkout":
       return (
         <div style={{ display: "flex" }}>
           <CssBaseline />
           <Navbar
             totalItems={cart.total_items}
             handleDrawerToggle={handleDrawerToggle}
+            setRoute
           />
 
           <Checkout
@@ -127,6 +132,7 @@ const App = () => {
             order={order}
             onCaptureCheckout={handleCaptureCheckout}
             error={errorMessage}
+            setRoute
           />
         </div>
       );
