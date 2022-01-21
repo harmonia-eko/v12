@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { CssBaseline } from '@material-ui/core';
-import { useHistory, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {useRouter} from 'next/router'
-import { Navbar, Products, Cart, Checkout } from './components';
-import { commerce } from './lib/commerce';
-import { ChildCareOutlined } from '@material-ui/icons';
+import React, { useState, useEffect } from "react";
+import { CssBaseline } from "@material-ui/core";
+import {
+  useHistory,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { useRouter } from "next/router";
+import { Navbar, Products, Cart, Checkout } from "./components";
+import { commerce } from "./lib/commerce";
+import { ChildCareOutlined } from "@material-ui/icons";
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
-  const [errorMessage, setErrorMessage] = useState('');
-const router=useRouter()
+  const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
 
@@ -55,7 +60,10 @@ const router=useRouter()
 
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
-      const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+      const incomingOrder = await commerce.checkout.capture(
+        checkoutTokenId,
+        newOrder
+      );
 
       setOrder(incomingOrder);
 
@@ -71,36 +79,58 @@ const router=useRouter()
   }, []);
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
- switch (router.pathname){
-  case ('/shop'):return<div style={{ display: 'flex' }}>
-  <CssBaseline />
-  <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
- 
-    
-      <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
-    
-    
-</div>
-  case ('/cart'): return<div style={{ display: 'flex' }}>
-  <CssBaseline />
-  <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
-  
-    
-      <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
-    
-   
-</div>
-  case ('/checkout'):    return    <div style={{ display: 'flex' }}>
-  <CssBaseline />
-  <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
-  
-    
-      <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
-    
-  
-</div>
+  switch (router.pathname) {
+    case "/shop":
+      return (
+        <div style={{ display: "flex" }}>
+          <CssBaseline />
+          <Navbar
+            totalItems={cart.total_items}
+            handleDrawerToggle={handleDrawerToggle}
+          />
 
- }
+          <Products
+            products={products}
+            onAddToCart={handleAddToCart}
+            handleUpdateCartQty
+          />
+        </div>
+      );
+    case "/cart":
+      return (
+        <div style={{ display: "flex" }}>
+          <CssBaseline />
+          <Navbar
+            totalItems={cart.total_items}
+            handleDrawerToggle={handleDrawerToggle}
+          />
+
+          <Cart
+            cart={cart}
+            onUpdateCartQty={handleUpdateCartQty}
+            onRemoveFromCart={handleRemoveFromCart}
+            onEmptyCart={handleEmptyCart}
+          />
+        </div>
+      );
+    case "/checkout":
+      return (
+        <div style={{ display: "flex" }}>
+          <CssBaseline />
+          <Navbar
+            totalItems={cart.total_items}
+            handleDrawerToggle={handleDrawerToggle}
+          />
+
+          <Checkout
+            cart={cart}
+            order={order}
+            onCaptureCheckout={handleCaptureCheckout}
+            error={errorMessage}
+          />
+        </div>
+      );
+  }
 };
 
 export default App;

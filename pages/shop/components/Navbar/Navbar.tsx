@@ -21,9 +21,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
     <Menu anchorEl={mobileMoreAnchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} id={mobileMenuId} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMobileMenuOpen} onClose={handleMobileMenuClose}>
       <MenuItem>
         <Link href="/cart" aria-label="Show cart items" >
-          <Badge badgeContent={totalItems} color="secondary">
-            <ShoppingCart />
-          </Badge>
+          Cart
         </Link>
         <p>Cart</p>
       </MenuItem>
@@ -37,19 +35,14 @@ const PrimarySearchAppBar = ({ totalItems }) => {
           <Link href="/"  >
             {/* <img src={logo} alt="commerce.js" height="25px" className={classes.image} /> */} Commerce.js
           </Link>
-          <div className={classes.grow} />
-          {location === '/' && (
-          <div className={classes.menuButton}>
-            <Link href="/cart" aria-label="Show cart items" >
-              <Badge badgeContent={totalItems} color="secondary">
-                <ShoppingCart />
-              </Badge>
+          <div className={classes.grow} >
+          
+            <Link href="/cart"  >
+             Cart
             </Link>
           </div>
-          )}
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
     </>
   );
 };
