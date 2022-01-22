@@ -88,6 +88,7 @@ const App = () => {
             totalItems={cart.total_items}
             handleDrawerToggle={handleDrawerToggle}
             setRoute
+            route
           />
 
           <Products
@@ -95,6 +96,7 @@ const App = () => {
             onAddToCart={handleAddToCart}
             handleUpdateCartQty
             setRoute
+            route
           />
         </div>
       );
@@ -106,6 +108,7 @@ const App = () => {
             totalItems={cart.total_items}
             handleDrawerToggle={handleDrawerToggle}
             setRoute
+            route
           />
 
           <Cart
@@ -114,6 +117,7 @@ const App = () => {
             onRemoveFromCart={handleRemoveFromCart}
             onEmptyCart={handleEmptyCart}
             setRoute
+            route
           />
         </div>
       );
@@ -125,6 +129,7 @@ const App = () => {
             totalItems={cart.total_items}
             handleDrawerToggle={handleDrawerToggle}
             setRoute
+            route
           />
 
           <Checkout
@@ -133,6 +138,7 @@ const App = () => {
             onCaptureCheckout={handleCaptureCheckout}
             error={errorMessage}
             setRoute
+            route
           />
         </div>
       );
